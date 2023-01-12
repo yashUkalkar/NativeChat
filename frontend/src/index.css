@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-dark-blue;
+  }
+
+  ::selection {
+    @apply bg-pink text-white;
+  }
+
+  input {
+    @apply bg-transparent
+    border-b border-b-dark-blue
+    outline-none w-full px-3 py-1 
+    placeholder:font-medium
+    hover:border-b-pink transition 
+    focus:border-b-pink focus:placeholder:text-pink focus:placeholder:text-opacity-50 focus:outline-none;
+  }
+
+  ul,
+  li {
+    @apply relative;
+  }
+  a {
+    @apply opacity-60 hover:opacity-100 transition
+    after:content-[""] after:absolute after:left-0 after:bottom-0
+    after:w-full after:h-[1px] after:bg-dark-blue
+    after:transition after:hover:scale-x-110
+    active:text-pink active:after:bg-pink
+    active:after:scale-x-90;
+  }
+}

@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  user_id                     String     @id @default(uuid()) @db.Uuid
+  username                    String     @db.VarChar(50)
+  email                       String     @unique @db.VarChar(255)
+  password_hash               String
+  user_image                  String?
+  messages_messages_from_user Messages[] @relation("messages_from_userToUsers")
+  messages_messages_to_user   Messages[] @relation("messages_to_userToUsers")
+}
+
+model Messages {
+  message_id                  String   @id @default(uuid())
+  from_user                   String   @db.Uuid
+  to_user                     String   @db.Uuid
+  message_content             String
+  sent_time                   DateTime @default(now()) @db.Timestamptz()
+  users_messages_from_user_id Users    @relation("messages_from_userToUsers", fields: [from_user], references: [user_id], onDelete: Cascade)
+  users_messages_to_user_id   Users    @relation("messages_to_userToUsers", fields: [to_user], references: [user_id], onDelete: Cascade)
+}
