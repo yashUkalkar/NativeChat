@@ -9,6 +9,9 @@ dotenv.config();
 // Socket types
 import socketInit from "./socket/socket.js";
 
+// Socket event handlers
+import { sendMessageHandler } from "./socket/messageEvents.js";
+
 // Routes
 import authRoutes from "./routes/authRoutes.js";
 
@@ -42,6 +45,9 @@ app.all("/", (req: Request, res: Response) => {
 // Socket handlers
 io.on("connection", (socket) => {
   console.log(`User connected to socket with id: ${socket.id}`);
+
+  // * Add all event handlers
+  sendMessageHandler(socket);
 });
 
 httpServer.listen(PORT, () => {

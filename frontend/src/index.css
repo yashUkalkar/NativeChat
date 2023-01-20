@@ -32,4 +32,8 @@
     active:text-pink active:after:bg-pink
     active:after:scale-x-90;
   }
+
+  .selected-chat {
+    @apply text-white bg-pink bg-opacity-100 border-none;
+  }
 }

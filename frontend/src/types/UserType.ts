@@ -1,6 +1,6 @@
 export interface UserType {
-  userID: string;
+  user_id: string;
   email: string;
   username: string;
-  userImage?: string;
+  user_image?: string;
 }

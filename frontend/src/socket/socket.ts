@@ -2,6 +2,7 @@ import { io } from "socket.io-client";
 
 // Events
 import addConnectEvents from "./connectEvents";
+import { receiveMessageHandler } from "./messageEvents";
 
 const getSocketInstance = () => {
   const SERVER_URL =
@@ -17,5 +18,6 @@ const getSocketInstance = () => {
 const socketInstance = getSocketInstance();
 // Add events
 addConnectEvents(socketInstance);
+receiveMessageHandler(socketInstance);
 
 export default socketInstance;

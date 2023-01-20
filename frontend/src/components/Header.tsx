@@ -1,7 +1,6 @@
 // Packages
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
 
 // Component
 import { Divide as HamburgerMenu } from "hamburger-react";
